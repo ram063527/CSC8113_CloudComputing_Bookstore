@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: catalogdb
+      POSTGRES_DB: catalog_db
     ports:
       - "15432:5432"
     healthcheck:
