@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: cart-service
+
+# DATABASE CONFIGURATION
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:25432/cart_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+server:
+  shutdown: graceful
+  port: 8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  info:
+    git:
+      mode: full
+
+
+cart:
+  page-size: 10
