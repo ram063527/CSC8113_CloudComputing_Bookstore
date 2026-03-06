@@ -60,6 +60,11 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-database-postgresql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wiremock.integrations</groupId>
+            <artifactId>wiremock-spring-boot</artifactId>
+            <version>4.0.9</version>
+        </dependency>
         <!-- Source: https://mvnrepository.com/artifact/io.github.resilience4j/resilience4j-spring-boot3 -->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
