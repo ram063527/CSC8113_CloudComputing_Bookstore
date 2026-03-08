@@ -39,6 +39,7 @@ class CartServiceImpl implements CartService {
     }
 
     @Override
+    @Transactional
     public CartResponseDTO getCartByUserId(String userId) {
         CartEntity cartEntity = getOrCreateActiveCart(userId);
         return cartMapper.toCartResponseDTO(cartEntity);

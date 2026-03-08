@@ -10,6 +10,8 @@ services:
       - DB_URL=jdbc:postgresql://catalog-db:5432/catalog_db
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://localhost:9191/realms/mylabs
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI=http://keycloak:9191/realms/mylabs/protocol/openid-connect/certs
     ports:
       - "8081:8081"
     restart: unless-stopped
@@ -31,6 +33,8 @@ services:
       - DB_URL=jdbc:postgresql://cart-db:5432/cart_db
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://localhost:9191/realms/mylabs
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI=http://keycloak:9191/realms/mylabs/protocol/openid-connect/certs
     ports:
       - "8082:8082"
     restart: unless-stopped

@@ -59,7 +59,7 @@ resilience4j:
       catalog-cb:
           register-health-indicator: true
           sliding-window-type: COUNT_BASED
-          sliding-window-size: 5             # Looks at the last 5 requests
+          sliding-window-size: 5             # Looks at the last 5 requests,
           failure-rate-threshold: 50         # If 50% (3 out of 5) fail, the breaker OPENS
           wait-duration-in-open-state: 5s   # Waits 5 seconds before transitioning to HALF-OPEN to test the network
           permitted-number-of-calls-in-half-open-state: 3
