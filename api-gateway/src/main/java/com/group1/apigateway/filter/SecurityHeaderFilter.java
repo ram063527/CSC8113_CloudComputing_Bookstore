@@ -38,6 +38,10 @@ public class SecurityHeaderFilter  implements GlobalFilter, Ordered {
 
                     // 3. Inject BOTH headers for your backend controllers
                     ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
+                            .headers(headers -> {
+                                headers.remove("X-User-Id");
+                                headers.remove("X-User-Role");
+                            })
                             .header("X-User-Id", username)
                             .header("X-User-Role", roleHeader)
                             .build();

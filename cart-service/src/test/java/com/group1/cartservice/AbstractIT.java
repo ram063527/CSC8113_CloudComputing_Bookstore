@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 
-@Import(TestcontainersConfiguration.class)
+@Import({TestcontainersConfiguration.class, SecurityTestConfig.class})
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableWireMock(@ConfigureWireMock(port = 0))
 public class AbstractIT {
@@ -51,6 +51,9 @@ public class AbstractIT {
         wireMockServer.resetAll();
     }
 
+    protected String getToken(String username) {
+        return SecurityTestConfig.generateToken(username);
+    }
     // Mock Get Product By Code Check
 
     protected void mockGetProductByCode(String code, String name, BigDecimal price) {

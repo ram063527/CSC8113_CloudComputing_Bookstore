@@ -38,7 +38,7 @@ class CartControllerTest extends AbstractIT {
 
             RestAssured.given()
                     .contentType(ContentType.JSON)
-                    .header("X-User-Id", "user-123")
+                    .header("Authorization", "Bearer " + getToken("user-123"))
                     .body(requestBody)
                     .when()
                     .post("/api/carts/items")
@@ -69,7 +69,7 @@ class CartControllerTest extends AbstractIT {
 
             RestAssured.given()
                     .contentType(ContentType.JSON)
-                    .header("X-User-Id", "user-123")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .body(requestBody)
                     .when()
                     .post("/api/carts/items")
@@ -94,7 +94,7 @@ class CartControllerTest extends AbstractIT {
 
             RestAssured.given()
                     .contentType(ContentType.JSON)
-                    .header("X-User-Id", "user-123")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .body(requestBody)
                     .when()
                     .post("/api/carts/items")
@@ -119,7 +119,7 @@ class CartControllerTest extends AbstractIT {
 
             RestAssured.given()
                     .contentType(ContentType.JSON)
-                    .header("X-User-Id", "user-123")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .body(requestBody)
                     .when()
                     .post("/api/carts/items")
@@ -139,7 +139,7 @@ class CartControllerTest extends AbstractIT {
 
             RestAssured.given()
                     .contentType(ContentType.JSON)
-                    .header("X-User-Id", "user-1")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .body(requestBody)
                     .when().post("/api/carts/items")
                     .then().statusCode(400)
@@ -158,7 +158,7 @@ class CartControllerTest extends AbstractIT {
 
             RestAssured.given()
                     .contentType(ContentType.JSON)
-                    .header("X-User-Id", "user-1")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .body(requestBody)
                     .when().post("/api/carts/items")
                     .then().statusCode(400);
@@ -185,7 +185,7 @@ class CartControllerTest extends AbstractIT {
 
                 RestAssured.given()
                         .contentType(ContentType.JSON)
-                        .header("X-User-Id", "user-1") // Matches the SQL data!
+                        .header("Authorization", "Bearer " + getToken("user-1"))
                         .body(requestBody)
                         .when()
                         .put("/api/carts/items/{itemId}", 101) // Matches the SQL data!
@@ -208,7 +208,7 @@ class CartControllerTest extends AbstractIT {
 
                 RestAssured.given()
                         .contentType(ContentType.JSON)
-                        .header("X-User-Id", "user-1")
+                        .header("Authorization", "Bearer " + getToken("user-1"))
                         .body(requestBody)
                         .when()
                         .put("/api/carts/items/{itemId}", 101)
@@ -228,7 +228,7 @@ class CartControllerTest extends AbstractIT {
 
                 RestAssured.given()
                         .contentType(ContentType.JSON)
-                        .header("X-User-Id", "user-1")
+                        .header("Authorization", "Bearer " + getToken("user-1"))
                         .body(requestBody)
                         .when().put("/api/carts/items/99999")
                         .then().statusCode(404)
@@ -245,15 +245,15 @@ class CartControllerTest extends AbstractIT {
                 mockReleaseStockSuccess("B003");
 
                 RestAssured.given()
-                        .header("X-User-Id", "user-1")
+                        .header("Authorization", "Bearer " + getToken("user-1"))
                         .when()
-                        .delete("/api/carts/items/{itemId}", 102)
+                        .delete("/api/ca_rts/items/{itemId}", 102)
                         .then()
                         .statusCode(204);
 
                 // Verify it's actually gone
                 RestAssured.given()
-                        .header("X-User-Id", "user-1")
+                        .header("Authorization", "Bearer " + getToken("user-1"))
                         .when()
                         .get("/api/carts")
                         .then()
@@ -269,7 +269,7 @@ class CartControllerTest extends AbstractIT {
             void shouldReturnExistingCart() {
                 // Tests that the SQL data loaded correctly and our total calculations work
                 RestAssured.given()
-                        .header("X-User-Id", "user-1")
+                        .header("Authorization", "Bearer " + getToken("user-1"))
                         .when()
                         .get("/api/carts")
                         .then()
@@ -291,12 +291,12 @@ class CartControllerTest extends AbstractIT {
             mockReleaseStockSuccess("B003");
 
             RestAssured.given()
-                    .header("X-User-Id", "user-1")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .when().delete("/api/carts")
                     .then().statusCode(204);
 
             RestAssured.given()
-                    .header("X-User-Id", "user-1")
+                    .header("Authorization", "Bearer " + getToken("user-1"))
                     .when().get("/api/carts")
                     .then().statusCode(200)
                     .body("items", Matchers.hasSize(0))
@@ -307,7 +307,7 @@ class CartControllerTest extends AbstractIT {
         void shouldReturn404_whenNoActiveCart() {
             // brand-new-user has never created a cart — clearCart throws CartNotFoundException
             RestAssured.given()
-                    .header("X-User-Id", "no-cart-user")
+                    .header("Authorization", "Bearer " + getToken("user----1"))
                     .when().delete("/api/carts")
                     .then().statusCode(404);
         }
