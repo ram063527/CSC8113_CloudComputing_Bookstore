@@ -16,7 +16,7 @@ public class SecurityConfig {
 
 
     @Bean
-    public SecurityWebFilterChain  springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 
         ReactiveJwtAuthenticationConverter jwtAuthenticationConverter = new ReactiveJwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new KeycloakRoleConverter());
@@ -24,25 +24,35 @@ public class SecurityConfig {
         http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
-                        // 1. Anyone can view the catalog
+
+                        .pathMatchers(
+                                "/swagger-ui.html",
+                                "/webjars/**",
+                                "/v3/api-docs/**"          // covers /v3/api-docs/catalog and /v3/api-docs/cart
+                        ).permitAll()
+
                         .pathMatchers(HttpMethod.GET, "/catalog/**").permitAll()
 
-                        // 2. ONLY Admins can add/edit products
+
+                        .pathMatchers(HttpMethod.POST, "/catalog/*/reserve").authenticated()
+                        .pathMatchers(HttpMethod.POST, "/catalog/*/release").authenticated()
+
+
                         .pathMatchers(HttpMethod.POST, "/catalog/**").hasRole("admin")
                         .pathMatchers(HttpMethod.PUT, "/catalog/**").hasRole("admin")
+                        .pathMatchers(HttpMethod.PATCH, "/catalog/**").hasRole("admin")
                         .pathMatchers(HttpMethod.DELETE, "/catalog/**").hasRole("admin")
 
-                        // 3. Any logged-in user can access their cart
-                        .pathMatchers("/cart/**").authenticated()
 
-                        .pathMatchers(HttpMethod.GET, "/webjars/**").permitAll()
-                        .pathMatchers(HttpMethod.GET, "/v3/api-docs/**").permitAll()
-                        .pathMatchers(HttpMethod.GET, "/swagger-ui.html").permitAll()
+                        .pathMatchers("/cart/**").authenticated()
 
 
                         .anyExchange().authenticated()
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter)));
-                return http.build();
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter))
+                );
+
+        return http.build();
     }
 }

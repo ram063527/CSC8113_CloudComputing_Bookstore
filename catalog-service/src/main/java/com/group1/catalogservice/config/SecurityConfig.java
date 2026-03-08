@@ -30,8 +30,8 @@ public class SecurityConfig {
 
                         // --- INTERNAL: only called by cart-service, lock down to authenticated ---
                         // reserve and release stock should not be publicly accessible
-                        .requestMatchers(HttpMethod.POST, "/api/products/*/reserve").authenticated()
-                        .requestMatchers(HttpMethod.POST, "/api/products/*/release").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/products/*/reserve").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/products/*/release").permitAll()
 
                         // --- ADMIN ONLY: product management ---
                         .requestMatchers(HttpMethod.POST, "/api/products").hasRole("admin")
@@ -41,10 +41,9 @@ public class SecurityConfig {
 
                         // Swagger / actuator open
                         .requestMatchers(
+                                "/v3/api-docs",        
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/actuator/health",
-                                "/actuator/info",
                                 "/actuator/**"
                         ).permitAll()
 
