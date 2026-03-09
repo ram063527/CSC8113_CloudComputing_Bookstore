@@ -5,7 +5,7 @@ name: API Gateway CI/CD Pipeline
 on:
   push:
     paths:
-      - api-gateway/**
+      - backend/api-gateway/**
     branches:
       - "**"
 
@@ -14,7 +14,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      working-directory: ./api-gateway
+      working-directory: ./backend/api-gateway
       DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-api-gateway
     defaults:
       run:
@@ -31,7 +31,7 @@ jobs:
       - name: Build with Maven
         run: |
           chmod +x mvnw
-          ./mvnw -ntp verify
+          ../mvnw -ntp verify
 
       - if: ${{ github.ref == 'refs/heads/backend' }}
         name: Login to Docker Hub
@@ -43,6 +43,6 @@ jobs:
       - if: ${{ github.ref == 'refs/heads/backend' }}
         name: Build and Push Docker Image
         run: |
-          ./mvnw spring-boot:build-image -DskipTests
+          ../mvnw spring-boot:build-image -DskipTests
           echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-api-gateway

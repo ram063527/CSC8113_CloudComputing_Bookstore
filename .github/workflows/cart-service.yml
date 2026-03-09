@@ -1,26 +1,26 @@
-name: Catalog Service CI/CD Pipeline
+name: Cart Service CI/CD Pipeline
+
+
 
 on:
     push:
-      paths:
-        - catalog-service/**
-      branches:
-        - "**"
-
+        paths:
+          - backend/cart-service/**
+        branches:
+          - "**"
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     env:
-      working-directory: ./catalog-service
-      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-catalog-service
+        working-directory: ./backend/cart-service
+        DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-cart-service
     defaults:
-      run:
-        working-directory: ${{ env.working-directory }}
+        run:
+            working-directory: ${{ env.working-directory }}
     steps:
       - uses: actions/checkout@v5
-
       - name: Setup Java 21
         uses: actions/setup-java@v5
         with:
@@ -31,7 +31,7 @@ jobs:
       - name: Build with Maven
         run: |
           chmod +x mvnw
-          ./mvnw -ntp verify
+          ../mvnw -ntp verify
 
       - if: ${{ github.ref == 'refs/heads/backend' }}
         name: Login to Docker Hub
@@ -43,6 +43,6 @@ jobs:
       - if: ${{ github.ref == 'refs/heads/backend' }}
         name: Build and Push Docker Image
         run: |
-          ./mvnw spring-boot:build-image -DskipTests
+          ../mvnw spring-boot:build-image -DskipTests
           echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-catalog-service
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-cart-service
