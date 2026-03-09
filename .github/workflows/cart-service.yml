@@ -30,7 +30,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          chmod +x mvnw
+          chmod +x ../mvnw
           ../mvnw -ntp verify
 
       - if: ${{ github.ref == 'refs/heads/backend' }}
