@@ -3,6 +3,7 @@ package com.group1.catalogservice.web.controllers;
 
 import com.group1.catalogservice.domain.ProductService;
 import com.group1.catalogservice.domain.model.*;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,12 @@ public class ProductController {
     private final ProductService productService;
 
 
+    @Operation(
+            summary = "GREEN DEPLOYMENT : GET all Products",
+            description = "Retrieve a paginated list of all products in the catalog. " +
+                    "Supports pagination through the 'page' query parameter. " +
+                    "Each page contains a fixed number of products (e.g., 20)."
+    )
     @GetMapping
     public ResponseEntity<PageResult<ProductShortResponseDTO>> getAllProducts(
             @RequestParam(name = "page", defaultValue = "1") int pageNo
