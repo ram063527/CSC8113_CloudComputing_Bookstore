@@ -43,6 +43,17 @@ jobs:
       - if: ${{ github.ref == 'refs/heads/backend' }}
         name: Build and Push Docker Image
         run: |
-          ../mvnw spring-boot:build-image -DskipTests
-          echo "Pushing the image $DOCKER_IMAGE_NAME to Docker Hub..."
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/csc8113bookstore-api-gateway
+        # 1. Get the first 7 characters of the commit hash
+              COMMIT_HASH=${GITHUB_SHA:0:7}
+          
+        # 2. Tell Spring boot to build the image and tag it with the commit hash
+              ../mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.DOCKER_IMAGE_NAME }}:$COMMIT_HASH -DskipTests
+          
+        # 3. Push that specific version to Docker Hub
+              docker push ${{ env.DOCKER_IMAGE_NAME }}:$COMMIT_HASH
+          
+        # 4. Put a second sticker on that exact same image called "latest"
+              docker tag ${{ env.DOCKER_IMAGE_NAME }}:$COMMIT_HASH ${{ env.DOCKER_IMAGE_NAME }}:latest
+          
+        # 5. Push the "latest" sticker to Docker Hub
+              docker push ${{ env.DOCKER_IMAGE_NAME }}:latest
