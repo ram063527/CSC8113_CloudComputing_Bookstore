@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8aec5a56-9ef3-4679-91ad-2a5972a5637d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/api-gateway.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/cart-service.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/catalog-service.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Taskfile.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/group1/apigateway/ApiGatewayApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/group1/apigateway/config/KeycloakRoleConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/group1/apigateway/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/group1/apigateway/filter/SecurityHeaderFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/test/java/com/group1/apigateway/ApiGatewayApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/ApplicationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/CartServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/clients/catalog/CatalogServiceClientConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/clients/catalog/ProductServiceClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/clients/catalog/dtos/ProductAvailabilityDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/clients/catalog/dtos/ProductShortResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/clients/catalog/dtos/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/clients/catalog/dtos/StockUpdateRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/config/AuthenticationFacade.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/config/OpenApiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartItemEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartItemServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/CartServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/exceptions/CartItemNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/exceptions/CartNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/exceptions/CatalogUnavailableException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/exceptions/InsufficientStockException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/exceptions/InvalidCartOperationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/model/AddToCartRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/model/CartItemResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/model/CartResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/model/CartStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/domain/model/UpdateQuantityRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/web/controller/CartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/web/controller/CartItemController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/java/com/group1/cartservice/web/exceptions/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/db/migration/V1__init_schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/db/migration/V2__add_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/main/resources/db/migration/V3__add_cartItems.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/java/com/group1/cartservice/AbstractIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/java/com/group1/cartservice/CartServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/java/com/group1/cartservice/SecurityTestConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/java/com/group1/cartservice/TestCartServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/java/com/group1/cartservice/TestcontainersConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/java/com/group1/cartservice/web/controller/CartControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart-service/src/test/resources/test-data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/ApplicationProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/CatalogServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/config/KeycloakRoleConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/config/OpenApiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/ProductEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/ProductServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/exceptions/InsufficientStockException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/exceptions/ProductAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/exceptions/ProductNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/mapper/ProductMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/CreateProductRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/PageResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/ProductAvailabilityDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/ProductDetailedResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/ProductShortResponseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/ProductSpecification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/StockUpdateRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/domain/model/UpdateProductRequestDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/web/controllers/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/java/com/group1/catalogservice/web/exceptions/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/resources/db/migration/V1__create_products_table.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/main/resources/db/migration/V2__add_books_data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/java/com/group1/catalogservice/AbstractIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/java/com/group1/catalogservice/CatalogServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/java/com/group1/catalogservice/SecurityTestConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/java/com/group1/catalogservice/TestCatalogServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/java/com/group1/catalogservice/TestcontainersConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/java/com/group1/catalogservice/web/controllers/ProductControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalog-service/src/test/resources/test-data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment/docker-compose/apps.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment/docker-compose/infra.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment/docker-compose/keycloak-data/h2/keycloakdb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment/docker-compose/keycloak-data/h2/keycloakdb.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deployment/docker-compose/realm-export.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_P:/Advanced Computer Science (ACS)/Semester 2/GroupProject/Technical_Part/CSC8113-bookstore-backend" value="3AUW5LcTXSqSFCdFQgPoTTE9mKl" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="GitHub Workflow" />
+        <option value="Enum" />
+        <option value="Record" />
+        <option value="Interface" />
+        <option value="Exception" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="3AUW5LcTXSqSFCdFQgPoTTE9mKl" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.CartControllerTest$AddItemToCartTest.shouldAddItemToCartSuccessfully.executor": "Debug",
+    "JUnit.CartControllerTest.executor": "Debug",
+    "JUnit.CatalogServiceApplicationTests.executor": "Debug",
+    "JUnit.ProductControllerTest$CreateProductTest.executor": "Run",
+    "JUnit.ProductControllerTest$CreateProductTest.shouldReturnConflictForDuplicateIsbn.executor": "Run",
+    "JUnit.ProductControllerTest.executor": "Debug",
+    "Maven.CSC8113-bookstore-backend [clean,install].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Debug",
+    "Spring Boot.CartServiceApplication.executor": "Debug",
+    "Spring Boot.CatalogServiceApplication.executor": "Debug",
+    "Spring Boot.TestCartServiceApplication.executor": "Debug",
+    "Spring Boot.TestCatalogServiceApplication.executor": "Debug",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "backend",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "P:/Advanced Computer Science (ACS)/Semester 2/GroupProject/Technical_Part/CSC8113-bookstore-backend/cart-service/src/main/java/com/group1/cartservice/clients/catalog/dtos",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "mysql_aurora"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="P:\Advanced Computer Science (ACS)\Semester 2\GroupProject\Technical_Part\CSC8113-bookstore-backend\cart-service\src\main\java\com\group1\cartservice\clients\catalog\dtos" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="P:\Advanced Computer Science (ACS)\Semester 2\GroupProject\Technical_Part\CSC8113-bookstore-backend\backend" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.group1.cartservice.web.controller" />
+      <recent name="com.group1.catalogservice.web.controllers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.group1.cartservice.domain.exceptions" />
+      <recent name="com.group1.cartservice.clients.catalog.dtos" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="ApiGatewayApplication" value="STOPPED" />
+              <entry key="CartServiceApplication" value="STOPPED" />
+              <entry key="CatalogServiceApplication" value="STOPPED" />
+              <entry key="TestCartServiceApplication" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.CartControllerTest">
+    <configuration name="CartControllerTest$AddItemToCartTest.shouldAddItemToCartSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cart-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group1.cartservice.web.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group1.cartservice.web.controller.CartControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.group1.cartservice.web.controller.CartControllerTest$AddItemToCartTest" />
+      <option name="METHOD_NAME" value="shouldAddItemToCartSuccessfully" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cart-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group1.cartservice.web.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group1.cartservice.web.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.group1.cartservice.web.controller.CartControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest$CreateProductTest.shouldReturnConflictForDuplicateIsbn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="catalog-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group1.catalogservice.web.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group1.catalogservice.web.controllers.ProductControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.group1.catalogservice.web.controllers.ProductControllerTest$CreateProductTest" />
+      <option name="METHOD_NAME" value="shouldReturnConflictForDuplicateIsbn" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="catalog-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group1.catalogservice.web.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.group1.catalogservice.web.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.group1.catalogservice.web.controllers.ProductControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="cart-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="cart-service" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="cart-service" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <module name="cart-service" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="api-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.group1.apigateway.ApiGatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="cart-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.group1.cartservice.CartServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CatalogServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="catalog-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.group1.catalogservice.CatalogServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCartServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="cart-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.group1.cartservice.TestCartServiceApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.group1.cartservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="cart-service" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Autodetect">
+      <module name="cart-service" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="cart-service" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.CartControllerTest" />
+        <item itemvalue="JUnit.ProductControllerTest" />
+        <item itemvalue="JUnit.CartControllerTest$AddItemToCartTest.shouldAddItemToCartSuccessfully" />
+        <item itemvalue="Spring Boot.TestCartServiceApplication" />
+        <item itemvalue="JUnit.ProductControllerTest$CreateProductTest.shouldReturnConflictForDuplicateIsbn" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.33" />
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.33" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8aec5a56-9ef3-4679-91ad-2a5972a5637d" name="Changes" comment="" />
+      <created>1772647447084</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772647447084</updated>
+      <workItem from="1772647447893" duration="47044000" />
+      <workItem from="1772788681044" duration="35556000" />
+      <workItem from="1772876766262" duration="1413000" />
+      <workItem from="1772878313642" duration="19988000" />
+      <workItem from="1772964967382" duration="26806000" />
+      <workItem from="1773046240848" duration="4369000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
+  </component>
+</project>
