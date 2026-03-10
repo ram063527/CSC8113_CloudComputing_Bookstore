@@ -23,7 +23,7 @@ spring:
                 allowedOrigins: "*"
                 allowedMethods: "*"
                 allowedHeaders: "*"
-                allowCredentials: false
+                allowCredentials: true
 
 
           routes:

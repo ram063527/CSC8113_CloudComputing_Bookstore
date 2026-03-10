@@ -2,3 +2,11 @@
 ./mvnw -pl cart-service spring-boot:build-image -DskipTests
 ./mvnw -pl api-gateway spring-boot:build-image -DskipTests
 
+
+
+
+minikube start --memory 12288 --cpus 6
+minikube addons enable metrics-server
+
+
+kubectl create configmap keycloak-realm-config --from-file=realm.json=deployment/docker-compose/realm-export.json
