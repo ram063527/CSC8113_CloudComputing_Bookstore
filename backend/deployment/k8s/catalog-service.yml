@@ -7,7 +7,7 @@ metadata:
 spec:
   selector:
     app: catalog-service
-    color: green
+    color: blue
   ports:
     - port: 8081
       targetPort: 8081
@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          # Grabbing the image your GitHub Action just pushed!
+
           image: paritosh4495/csc8113bookstore-catalog-service:latest
           imagePullPolicy: Always
           env:
@@ -41,12 +41,18 @@ spec:
             - name: DB_URL
               value: "jdbc:postgresql://postgres-db:5432/catalog"
             - name: DB_USERNAME
-              value: "postgres"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
             - name: DB_PASSWORD
-              value: "postgres"
-            # The exact same JWT magic split we used in Docker Compose
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
-              value: "http://localhost:9191/realms/mylabs"
+              value: "http://keycloak:9191/realms/mylabs"
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI
               value: "http://keycloak:9191/realms/mylabs/protocol/openid-connect/certs"
           ports:

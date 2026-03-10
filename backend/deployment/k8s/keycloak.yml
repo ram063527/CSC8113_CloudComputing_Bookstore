@@ -35,19 +35,35 @@ spec:
             - name: KEYCLOAK_ADMIN
               value: "admin"
             - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "admin1234"
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-secret
+                  key: admin-password
             - name: KC_DB
               value: "postgres"
             - name: KC_DB_URL
               value: "jdbc:postgresql://postgres-db:5432/keycloak" # Points to the K8s Postgres Service
             - name: KC_DB_USERNAME
-              value: "postgres"
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
             - name: KC_DB_PASSWORD
-              value: "postgres"
-            - name: KC_HOSTNAME_STRICT # Crucial for internal K8s traffic
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: KC_HOSTNAME_STRICT
               value: "false"
           ports:
             - containerPort: 9191
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
           volumeMounts:
             - name: realm-volume
               mountPath: /opt/keycloak/data/import/realm.json

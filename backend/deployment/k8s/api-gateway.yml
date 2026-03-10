@@ -10,6 +10,7 @@ spec:
   ports:
     - port: 9000
       targetPort: 9000
+  type: LoadBalancer
 
 ---
 # The Deployment: Manages the API Gateway Pod
@@ -39,7 +40,7 @@ spec:
             - name: CART_SERVICE_URL
               value: "http://cart-service:8082"
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
-              value: "http://localhost:9191/realms/mylabs"
+              value: "http://keycloak:9191/realms/mylabs"
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI
               value: "http://keycloak:9191/realms/mylabs/protocol/openid-connect/certs"
           ports:
@@ -47,5 +48,7 @@ spec:
           resources:
             requests:
               memory: "500Mi"
+              cpu: "250m"
             limits:
               memory: "700Mi"
+              cpu: "500m"
