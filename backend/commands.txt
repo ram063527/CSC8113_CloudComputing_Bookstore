@@ -15,3 +15,46 @@ oc create configmap keycloak-realm-config --from-file=realm.json=realm-export.js
 
 
 kubectl apply -f k8s/
+
+
+
+---------------- AZURE CLI ---------------------
+// Logging into Azure using the Azure CLI. This command will prompt you to authenticate with your Azure account, allowing you to manage your Azure resources from the command line.
+
+1. az login
+
+// Register the Microsoft.ContainerService resource provider in your Azure subscription. This is necessary to use Azure Kubernetes Service (AKS) and related features.
+
+2. az provider register --namespace Microsoft.ContainerService
+
+// Creating a resource group in Azure to hold all the resources for the bookstore application. The resource group is a logical container that helps manage and organize related resources in Azure. In this case, we are creating a resource group named "bookstore-rg" in the "uksouth" region.
+
+3. az group create --name bookstore-rg --location swedencentral
+
+
+// Creating a AKS Cluster
+
+3. az aks create --resource-group bookstore-rg --name bookstore-cluster --node-count 2 --node-vm-size Standard_B2s_v2 --enable-cluster-autoscaler --min-count 1 --max-count 4 --generate-ssh-keys
+
+
+// 4. Connecting to the AKS Cluster using kubectl
+
+4. az aks get-credentials --resource-group bookstore-rg --name bookstore-cluster
+
+// 5. Deploying the application to the AKS Cluster using kubectl
+
+a. kubectl apply -f secrets.yml
+b. kubectl apply -f postgres.yml
+c. kubectl rollout status statefulset/postgres --timeout=3m
+d. kubectl apply -f keycloak.yml
+e. kubectl rollout status deployment/keycloak --timeout=6m
+f. kubectl apply -f catalog-service.yml
+g. kubectl apply -f cart-service.yml
+h. kubectl apply -f api-gateway.yml
+
+// 6. Verifying the deployment and checking the status of the pods in the AKS Cluster
+kubectl get pods -n bookstore
+kubectl get services -n bookstore
+
+// FOR HPA
+kubectl apply -f hpa.yml
