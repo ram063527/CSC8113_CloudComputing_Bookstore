@@ -10,8 +10,8 @@ export const options = {
 };
 
 export default function () {
-    // Hitting the Catalog Service directly to isolate the CPU load
-    const res = http.get('http://localhost:8081/api/products');
+
+    const res =  http.get('http://9.223.64.113:9000/catalog');
 
     check(res, {
         'is status 200': (r) => r.status === 200,
