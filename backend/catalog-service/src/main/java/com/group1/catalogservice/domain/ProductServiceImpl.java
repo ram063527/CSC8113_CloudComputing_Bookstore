@@ -7,6 +7,8 @@ import com.group1.catalogservice.domain.exceptions.ProductNotFoundException;
 import com.group1.catalogservice.domain.mapper.ProductMapper;
 import com.group1.catalogservice.domain.model.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +30,7 @@ class ProductServiceImpl implements ProductService {
 
     @Override
 
+    @Cacheable(value = "products", key = "#pageNo")
     public PageResult<ProductShortResponseDTO> getAllProducts(int pageNo) {
         Sort sort = Sort.by("name").ascending();
         pageNo = pageNo <= 1 ? 0 : pageNo - 1;
@@ -49,6 +52,7 @@ class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "product",key = "#code")
     public ProductDetailedResponseDTO getProductByCode(String code) {
         ProductDetailedResponseDTO productResponse =  productRepository.findByCodeAndStatusNot(code, Status.DISCONTINUED)
                 .map(productMapper::toProductDetailedResponseDTO)
@@ -83,6 +87,7 @@ class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
+    @CacheEvict(value = {"products", "product"}, allEntries = true)
     public ProductDetailedResponseDTO createProduct(CreateProductRequestDTO request) {
         // Check if product with same isbn already exists
         if (productRepository.existsByIsbn(request.isbn())) {
@@ -99,6 +104,7 @@ class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
+    @CacheEvict(value = {"products", "product"}, key = "#code")
     public ProductDetailedResponseDTO updateProduct(String code, UpdateProductRequestDTO request) {
         ProductEntity existingProduct = productRepository.findByCode(code)
                 .orElseThrow(() -> ProductNotFoundException.forCode(code));

@@ -23,6 +23,7 @@ kubectl apply -f k8s/
 
 1. az login
 
+
 // Register the Microsoft.ContainerService resource provider in your Azure subscription. This is necessary to use Azure Kubernetes Service (AKS) and related features.
 
 2. az provider register --namespace Microsoft.ContainerService

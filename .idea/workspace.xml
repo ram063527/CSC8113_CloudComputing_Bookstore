@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8aec5a56-9ef3-4679-91ad-2a5972a5637d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/load-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/load-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/catalog-service/src/main/java/com/group1/catalogservice/CatalogServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/catalog-service/src/main/java/com/group1/catalogservice/CatalogServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/catalog-service/src/main/java/com/group1/catalogservice/domain/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/catalog-service/src/main/java/com/group1/catalogservice/domain/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/commands.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +148,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.CartServiceApplication">
+  <component name="RunManager" selected="Spring Boot.CatalogServiceApplication">
     <configuration name="CartControllerTest$AddItemToCartTest.shouldAddItemToCartSuccessfully" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cart-service" />
       <extension name="coverage">
@@ -374,7 +376,8 @@
       <workItem from="1772878313642" duration="19988000" />
       <workItem from="1772964967382" duration="26806000" />
       <workItem from="1773046240848" duration="30993000" />
-      <workItem from="1773133246913" duration="23428000" />
+      <workItem from="1773133246913" duration="23609000" />
+      <workItem from="1773221263657" duration="5823000" />
     </task>
     <servers />
   </component>
