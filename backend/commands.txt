@@ -73,6 +73,15 @@ az aks stop --resource-group bookstore-rg --name bookstore-cluster
 az aks start --resource-group bookstore-rg --name bookstore-cluster
 
 
+k6 run --duration 3m --vus 50 load-test.js
+
+
+ while ($true) {
+     Invoke-RestMethod http://9.223.64.113:9000/catalog/version
+     Start-Sleep -Seconds 1
+ }
+
+
 
 Traffic spike hits catalog-service
          │
