@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate, createSearchParams } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 
@@ -20,20 +20,15 @@ function BrandLogo() {
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
         <path
           d="M4 6.5C4 5.67 4.67 5 5.5 5H18a2 2 0 0 1 2 2v10.5a.5.5 0 0 1-.8.4C18.13 17.1 16.88 16.5 15 16.5H6.5A2.5 2.5 0 0 0 4 19V6.5Z"
-          fill="currentColor"
-          opacity="0.18"
+          fill="currentColor" opacity="0.18"
         />
         <path
           d="M6.5 5H18a2 2 0 0 1 2 2v10.5a.5.5 0 0 1-.8.4C18.13 17.1 16.88 16.5 15 16.5H6.5A2.5 2.5 0 0 0 4 19V7.5A2.5 2.5 0 0 1 6.5 5Z"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
+          stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"
         />
         <path
           d="M8 8.5h8M8 11h8M8 13.5h5"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
+          stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"
         />
       </svg>
     </div>
@@ -45,10 +40,7 @@ function CartIcon() {
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none">
       <path
         d="M3 4h2l1.2 7.2A2 2 0 0 0 8.18 13H17a2 2 0 0 0 1.95-1.55L20 7H7"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
       />
       <circle cx="9" cy="19" r="1.6" fill="currentColor" />
       <circle cx="17" cy="19" r="1.6" fill="currentColor" />
@@ -71,25 +63,30 @@ export default function Navbar() {
   const { count } = useCart();
   const { user, login, logout } = useAuth();
 
+  // 1. Derive current query from URL first
   const currentQuery = useMemo(() => {
-    const params = new URLSearchParams(location.search);
-    return params.get("q") || "";
+    return new URLSearchParams(location.search).get("q") || "";
   }, [location.search]);
 
+  // 2. Then use it in useState
   const [search, setSearch] = useState(currentQuery);
+
+  // 3. Keep input in sync when URL changes
+  useEffect(() => {
+    setSearch(currentQuery);
+  }, [currentQuery]);
+
+  const initials = getInitials(user);
+  const username = getUsername(user);
 
   function handleSubmit(e) {
     e.preventDefault();
     const q = search.trim();
-
     navigate({
       pathname: "/",
       search: q ? `?${createSearchParams({ q })}` : "",
     });
   }
-
-  const initials = getInitials(user);
-  const username = getUsername(user);
 
   return (
     <header className="topbar">
@@ -103,9 +100,7 @@ export default function Navbar() {
         </Link>
 
         <form className="nav-search" onSubmit={handleSubmit} role="search">
-          <span className="nav-search-icon">
-            <SearchIcon />
-          </span>
+          <span className="nav-search-icon"><SearchIcon /></span>
           <input
             type="search"
             placeholder="Search books, authors, topics..."
@@ -120,7 +115,7 @@ export default function Navbar() {
             <>
               <Link to="/cart" className="cart-btn" aria-label="Open cart">
                 <CartIcon />
-                {count > 0 ? <span className="cart-badge">{count}</span> : null}
+                {count > 0 && <span className="cart-badge">{count}</span>}
               </Link>
 
               <div className="profile-wrap" title={username}>

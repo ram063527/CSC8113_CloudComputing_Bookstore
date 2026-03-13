@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 const STATUS_CONFIG = {
-  AVAILABLE:    { label: "Available",    color: "#16a34a", bg: "#dcfce7", dot: "#22c55e" },
+  AVAILABLE:    { label: "Available",    color: "#15803d", bg: "#dcfce7", dot: "#22c55e" },
   OUT_OF_STOCK: { label: "Out of Stock", color: "#b45309", bg: "#fef9c3", dot: "#f59e0b" },
   DISCONTINUED: { label: "Discontinued", color: "#6b7280", bg: "#f3f4f6", dot: "#9ca3af" },
 };
@@ -32,33 +32,27 @@ export default function BookCard({ book }) {
             alt={book.name}
             className="book-image"
             onError={(e) => {
-              e.target.style.display = "none";
-              e.target.nextSibling.style.display = "grid";
+              e.currentTarget.style.display = "none";
             }}
           />
-        ) : null}
-        <div
-          className="book-image book-image-placeholder"
-          style={{ display: book.imageUrl ? "none" : "grid" }}
-        >
-          📖
-        </div>
-
-        {/* Availability badge top-right of image */}
-        <span
-          className="availability-badge"
-          style={{ background: status.bg, color: status.color }}
-        >
-          <span
-            className="availability-dot"
-            style={{ background: status.dot }}
-          />
-          {status.label}
-        </span>
+        ) : (
+          <div className="book-image-placeholder">📖</div>
+        )}
       </div>
 
       <div className="book-content">
-        <span className="book-price">£{Number(book.price).toFixed(2)}</span>
+        {/* Price + availability always on white — clean and readable */}
+        <div className="book-meta-row">
+          <span className="book-price">£{Number(book.price).toFixed(2)}</span>
+          <span
+            className="availability-pill"
+            style={{ background: status.bg, color: status.color }}
+          >
+            <span className="availability-dot" style={{ background: status.dot }} />
+            {status.label}
+          </span>
+        </div>
+
         <h3 className="book-title">{book.name}</h3>
         <p className="book-author">{book.author}</p>
 
