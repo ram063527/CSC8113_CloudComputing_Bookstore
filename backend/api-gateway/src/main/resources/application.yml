@@ -63,6 +63,12 @@ spring:
                 - Path=/v3/api-docs/cart
               filters:
                 - RewritePath=/v3/api-docs/cart, /v3/api-docs
+                -
+            - id: frontend-route
+              uri: ${FRONTEND_URL:http://localhost:5173}
+              predicates:
+                - Path=/**
+              order: 100
 
           default-filters:
             - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Methods Access-Control-Allow-Headers RETAIN_FIRST
