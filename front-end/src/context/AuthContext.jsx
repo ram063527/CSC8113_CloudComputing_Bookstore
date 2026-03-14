@@ -32,7 +32,8 @@ export function AuthProvider({ children }) {
     keycloak
       .init({
         onLoad: undefined,
-        checkLoginIframe: false
+        checkLoginIframe: false,
+        pkceMethod: false,
       })
       .then((authenticated) => {
         if (authenticated) setUser(buildUser(keycloak));
