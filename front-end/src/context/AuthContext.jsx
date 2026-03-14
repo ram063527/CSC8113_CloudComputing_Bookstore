@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
       .init({
         onLoad: undefined,
         checkLoginIframe: false,
-        pkceMethod: "S256",
+        pkceMethod: false,
       })
       .then((authenticated) => {
         if (authenticated) setUser(buildUser(keycloak));
