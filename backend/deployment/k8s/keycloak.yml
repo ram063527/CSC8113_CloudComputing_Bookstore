@@ -1,5 +1,5 @@
 ---
-# 1. The Service: Creates the internal network address 'keycloak'
+# 1. The Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -10,11 +10,9 @@ spec:
   ports:
     - port: 9191
       targetPort: 9191
-  type: LoadBalancer
-
 
 ---
-# 2. The Deployment: Manages the Keycloak Pod
+# 2. The Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,7 +30,11 @@ spec:
       containers:
         - name: keycloak
           image: quay.io/keycloak/keycloak:26.5.0
-          args: ["start-dev", "--http-port=9191", "--import-realm"]
+          args:
+            - "start-dev"
+            - "--http-port=9191"
+            - "--import-realm"
+            - "--http-relative-path=/auth"
           env:
             - name: KEYCLOAK_ADMIN
               value: "admin"
@@ -44,7 +46,7 @@ spec:
             - name: KC_DB
               value: "postgres"
             - name: KC_DB_URL
-              value: "jdbc:postgresql://postgres-db:5432/keycloak" # Points to the K8s Postgres Service
+              value: "jdbc:postgresql://postgres-db:5432/keycloak"
             - name: KC_DB_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -55,7 +57,17 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: password
+            - name: KC_HTTP_ENABLED
+              value: "true"
             - name: KC_HOSTNAME_STRICT
+              value: "false"
+            - name: KC_PROXY_HEADERS
+              value: "xforwarded"
+            - name: KC_HOSTNAME
+              value: "4.225.128.203"
+            - name: KC_HOSTNAME_PATH
+              value: "/auth"
+            - name: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
               value: "false"
           ports:
             - containerPort: 9191

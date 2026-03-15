@@ -1,5 +1,5 @@
 ---
-# The Service: Opens port 9000 for the Gateway
+# The Service: ClusterIP - accessed via Ingress
 apiVersion: v1
 kind: Service
 metadata:
@@ -10,7 +10,6 @@ spec:
   ports:
     - port: 9000
       targetPort: 9000
-  type: LoadBalancer
 
 ---
 # The Deployment: Manages the API Gateway Pod
@@ -42,10 +41,9 @@ spec:
             - name: FRONTEND_URL
               value: "http://frontend:80"
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI
-              value: "http://51.12.134.170:9191/realms/mylabs"
+              value: "https://4.225.128.203/auth/realms/mylabs"
             - name: SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI
-              value: "http://keycloak:9191/realms/mylabs/protocol/openid-connect/certs"
-
+              value: "http://keycloak:9191/auth/realms/mylabs/protocol/openid-connect/certs"
 
           ports:
             - containerPort: 9000

@@ -6,8 +6,8 @@ metadata:
 data:
   config.js: |
     window.ENV = {
-        API_BASE:           "http://9.223.64.113:9000",
-        KEYCLOAK_URL:       "http://51.12.134.170:9191",
+        API_BASE:           "https://4.225.128.203",
+        KEYCLOAK_URL:       "https://4.225.128.203/auth",
         KEYCLOAK_REALM:     "mylabs",
         KEYCLOAK_CLIENT_ID: "bookstore-frontend-k8s"
     };
@@ -24,8 +24,6 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-
-
 
 ---
 apiVersion: apps/v1
