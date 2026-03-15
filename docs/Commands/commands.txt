@@ -1,20 +1,8 @@
-./mvnw -pl catalog-service spring-boot:build-image -DskipTests
-./mvnw -pl cart-service spring-boot:build-image -DskipTests
-./mvnw -pl api-gateway spring-boot:build-image -DskipTests
 
 
 
 
-minikube start --memory 12288 --cpus 6
-minikube addons enable metrics-server
 
-
-kubectl create configmap keycloak-realm-config --from-file=realm.json=deployment/docker-compose/realm-export.json
-
-oc create configmap keycloak-realm-config --from-file=realm.json=realm-export.json
-
-
-kubectl apply -f k8s/
 
 
 
@@ -60,10 +48,6 @@ i. kubectl apply -f api-gateway.yml
 kubectl get pods -n bookstore
 kubectl get services -n bookstore
 
-// FOR HPA
-kubectl apply -f hpa.yml
-
-
 
 /// FOR SHUTTING CLUSTER DOWN
 az aks stop --resource-group bookstore-rg --name bookstore-cluster
@@ -72,14 +56,6 @@ az aks stop --resource-group bookstore-rg --name bookstore-cluster
 /// FOR STARTING CLUSTER UP
 az aks start --resource-group bookstore-rg --name bookstore-cluster
 
-
-k6 run --duration 3m --vus 50 load-test.js
-
-
- while ($true) {
-     Invoke-RestMethod http://9.223.64.113:9000/catalog/version
-     Start-Sleep -Seconds 1
- }
 
 
 

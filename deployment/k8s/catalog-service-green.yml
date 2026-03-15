@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          # Grabbing  brand new specific Git hash!
+          # Update the image tag below to the latest commit hash from the docker hub registry
           image: paritosh4495/csc8113bookstore-catalog-service:ce09212
           imagePullPolicy: Always
           env:

@@ -1,0 +1,8 @@
+minikube start --memory 12288 --cpus 6
+minikube addons enable metrics-server
+
+
+kubectl create configmap keycloak-realm-config --from-file=realm.json=deployment/docker-compose/realm-export.json
+
+
+kubectl apply -f k8s/

@@ -1,0 +1,36 @@
+1. Ingress NGINX Installation
+
+    helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+    helm repo update
+
+    helm install ingress-nginx ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"="/healthz"
+
+2. Create TLS secret
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 ` -keyout tls.key -out tls.crt ` -subj "/CN=4.225.128.203" ` -addext "subjectAltName=IP:4.225.128.203"
+
+
+3. Create TLS Secrest in kubernetes
+
+kubectl create secret tls bookstore-tls --cert=tls.crt --key=tls.key
+
+
+4.
+kubectl apply -f keycloak.yml
+kubectl apply -f api-gateway.yml
+kubectl apply -f frontend.yml
+kubectl apply -f ingress.yml
+
+5. Open NSG ports for Ingress Controller
+
+az network nsg list --resource-group MC_bookstore-rg_bookstore-cluster_swedencentral --query "[].name" -o table
+
+6.  open port 80
+
+az network nsg rule create --resource-group MC_bookstore-rg_bookstore-cluster_swedencentral --nsg-name aks-agentpool-42188344-nsg --name allow-http --protocol Tcp --direction Inbound --priority 100 --source-address-prefix Internet --destination-port-range 80 --access Allow
+
+7.  open port 443
+az network nsg rule create --resource-group MC_bookstore-rg_bookstore-cluster_swedencentral --nsg-name aks-agentpool-42188344-nsg --name allow-https --protocol Tcp --direction Inbound --priority 101 --source-address-prefix Internet --destination-port-range 443 --access Allow
+
+8. open health probe port
+az network nsg rule create --resource-group MC_bookstore-rg_bookstore-cluster_swedencentral --nsg-name aks-agentpool-42188344-nsg --name allow-ingress-nodeports --protocol Tcp --direction Inbound --priority 102 --source-address-prefix AzureLoadBalancer --destination-port-ranges 30659 32210 --access Allow
