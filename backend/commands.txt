@@ -235,7 +235,7 @@ Traffic spike hits catalog-service
 
     // KEYCLOAK FIX  HTTPS FIX
 
-    1. Ingress NGINX Installation
+1. Ingress NGINX Installation
 
     helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
     helm repo update
