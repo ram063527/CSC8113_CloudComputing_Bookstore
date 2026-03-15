@@ -53,6 +53,12 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.GET, "/catalog/**").permitAll()
                         .pathMatchers("/actuator/**").permitAll()
                         .pathMatchers("/healthz").permitAll()
+                        .pathMatchers("/admin/**").permitAll()          // Keycloak admin console
+                        .pathMatchers("/realms/**").permitAll()         // Keycloak endpoints
+                        .pathMatchers("/resources/**").permitAll()      // Keycloak static assets
+                        .pathMatchers("/js/**").permitAll()             // Keycloak JS
+
+
 
 
                         .pathMatchers(HttpMethod.POST, "/catalog/*/reserve").authenticated()
