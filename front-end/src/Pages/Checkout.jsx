@@ -419,11 +419,12 @@ function PaymentStep() {
 
         <StepIndicator step={step} />
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 28, alignItems: "start" }}>
+       <div style={{ display: "grid", gridTemplateColumns: "1fr 360px", gap: 28, alignItems: "start" }}>
           <div style={{ background: "white", border: "1px solid #c8d8e8", borderRadius: 24, padding: 28 }}>
-            {step === 0 && <DeliveryStep />}
-            {step === 1 && <PaymentStep />}
-            {step === 2 && <ConfirmStep />}
+            {/* Call them as standard JavaScript functions, not as React components */}
+            {step === 0 && DeliveryStep()}
+            {step === 1 && PaymentStep()}
+            {step === 2 && ConfirmStep()}
           </div>
           <OrderSummary cart={cart} />
         </div>
