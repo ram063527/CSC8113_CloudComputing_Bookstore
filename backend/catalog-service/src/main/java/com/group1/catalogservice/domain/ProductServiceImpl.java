@@ -95,6 +95,10 @@ class ProductServiceImpl implements ProductService {
         // Create ProductEntity from request
         ProductEntity productEntity = productMapper.toProductEntity(request);
         productEntity.setCode(UUID.randomUUID().toString());
+        // Enforce status based on stock at creation
+        if(productEntity.getStockQuantity() <=0){
+            productEntity.setStatus(Status.OUT_OF_STOCK);
+        }
         // Save to repository
         ProductEntity savedEntity = productRepository.save(productEntity);
         // Convert to response DTO and return
@@ -110,6 +114,13 @@ class ProductServiceImpl implements ProductService {
 
         // Update fields
         productMapper.updateProductEntityFromRequestDTO(request, existingProduct);
+        // Check stock and update status
+        if(existingProduct.getStockQuantity() <=0){
+            existingProduct.setStatus(Status.OUT_OF_STOCK);
+        } else if (existingProduct.getStatus() == Status.OUT_OF_STOCK && existingProduct.getStockQuantity() > 0)  {
+            existingProduct.setStatus(Status.AVAILABLE);
+        }
+
         // Save updated entity
         ProductEntity updatedEntity = productRepository.save(existingProduct);
         // Convert to response DTO and return
