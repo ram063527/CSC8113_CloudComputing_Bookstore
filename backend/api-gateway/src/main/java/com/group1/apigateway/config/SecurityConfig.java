@@ -52,6 +52,7 @@ public class SecurityConfig {
 
                         .pathMatchers(HttpMethod.GET, "/catalog/**").permitAll()
                         .pathMatchers("/actuator/**").permitAll()
+                        .pathMatchers("/healthz").permitAll()
 
 
                         .pathMatchers(HttpMethod.POST, "/catalog/*/reserve").authenticated()
