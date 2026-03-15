@@ -80,8 +80,10 @@ export default function BookDetail() {
 
   if (!book) return null;
 
-  const status = STATUS_CONFIG[book.status] || STATUS_CONFIG.DISCONTINUED;
-  const isAvailable = book.status === "AVAILABLE";
+  const derivedStatus = (book.status === "AVAILABLE" && book.stockQuantity <= 0) ? "OUT_OF_STOCK" : book.status;
+  
+  const status = STATUS_CONFIG[derivedStatus] || STATUS_CONFIG.DISCONTINUED;
+  const isAvailable = derivedStatus === "AVAILABLE";
 
   return (
     <div className="page-shell">
