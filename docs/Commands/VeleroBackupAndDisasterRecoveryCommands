@@ -1,0 +1,67 @@
+# 1. Dump inside pod
+kubectl exec postgres-0 -- pg_dumpall -U postgres -f /var/lib/postgresql/data/pgdata/pre-demo.dump
+
+# 2. Copy locally
+kubectl cp postgres-0:/var/lib/postgresql/data/pgdata/pre-demo.dump ./pre-demo.dump
+
+# 3. Upload to Azure
+az storage blob upload `
+  --account-name bookstorevelero12 `
+  --container-name velero-backups `
+  --account-key "$env:VELERO_STORAGE_KEY" `
+  --name "dumps/pre-demo-20260316.dump" `
+  --file ./pre-demo.dump `
+  --overwrite
+
+#4. Confirm
+az storage blob list `
+  --account-name bookstorevelero12 `
+  --container-name velero-backups `
+  --account-key "$env:VELERO_STORAGE_KEY" `
+  --query "[?contains(name, 'dumps/')].name" `
+  --output tsv
+
+
+
+ --------------------------------- DISASTER RECOVERY ---------------------------------
+
+ #1. DISASTER STRIKES! Delete the pod and PVC
+
+ kubectl delete pod postgres-0 --force --grace-period=0
+ $patch = '{"metadata":{"finalizers":null}}'
+ kubectl patch pvc postgres-storage-postgres-0 --type=merge -p $patch
+ kubectl delete pvc postgres-storage-postgres-0
+
+2. RESPAWN THE POD
+kubectl get pods -w
+
+3. PROVE THE DATA IS NO MORE
+
+kubectl exec postgres-0 -- psql -U postgres -d catalog -c "SELECT * FROM products LIMIT 5;"
+
+4. RESTORE THE BACKUP
+
+a) Download the backup from Azure
+
+az storage blob download `
+  --account-name bookstorevelero12 `
+  --container-name velero-backups `
+  --account-key "$env:VELERO_STORAGE_KEY" `
+  --name "dumps/pre-demo-20260316.dump" `
+  --file ./pre-demo-restore.dump
+
+b) Copy the backup to the pod
+kubectl cp ./pre-demo-restore.dump postgres-0:/tmp/pre-demo-restore.dump
+
+c) Restore the backup inside the pod
+kubectl exec postgres-0 -- psql -U postgres -f /tmp/pre-demo-restore.dump
+
+5. PROVE THE DATA IS BACK
+kubectl exec postgres-0 -- psql -U postgres -d catalog -c "SELECT * FROM products LIMIT 5;"
+
+
+
+
+
+
+
