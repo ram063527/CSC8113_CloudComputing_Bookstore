@@ -9,5 +9,5 @@ k6 run --duration 3m --vus 50 load-test.js
 
 while ($true) {
     Invoke-RestMethod -Uri https://4.225.128.203/catalog/version -SkipCertificateCheck
-    Start-Sleep -Seconds 1
+    Start-Sleep -Seconds 5
 }
