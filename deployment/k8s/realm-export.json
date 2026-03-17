@@ -172,8 +172,8 @@
                 "manage-events",
                 "manage-users",
                 "query-users",
-                "query-groups",
                 "view-clients",
+                "query-groups",
                 "manage-identity-providers",
                 "manage-authorization",
                 "view-users",
@@ -700,12 +700,12 @@
       ]
     },
     {
-      "id": "2e0659ce-a759-44ea-bf0e-3fb0bdbb0611",
+      "id": "a516e4a2-3bf1-4ce4-9fbc-318977265cff",
       "clientId": "bookstore-frontend-k8s",
-      "name": "Group 1 Boostore K8s Client",
-      "description": "AKS deployment",
+      "name": "Bookstore K8s Client",
+      "description": "Kubernetes Production Client ",
       "rootUrl": "https://4.225.128.203",
-      "adminUrl": "",
+      "adminUrl": "https://4.225.128.203",
       "baseUrl": "https://4.225.128.203",
       "surrogateAuthRequired": false,
       "enabled": true,
@@ -729,14 +729,11 @@
       "protocol": "openid-connect",
       "attributes": {
         "realm_client": "false",
-        "logout.confirmation.enabled": "false",
         "oidc.ciba.grant.enabled": "false",
         "backchannel.logout.session.required": "true",
         "standard.token.exchange.enabled": "false",
-        "frontchannel.logout.session.required": "true",
         "post.logout.redirect.uris": "https://4.225.128.203/*",
         "oauth2.device.authorization.grant.enabled": "false",
-        "display.on.consent.screen": "false",
         "backchannel.logout.revoke.offline.tokens": "false",
         "dpop.bound.access.tokens": "false"
       },
@@ -1728,14 +1725,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-attribute-mapper",
-            "saml-role-list-mapper",
-            "oidc-sha256-pairwise-sub-mapper",
-            "oidc-usermodel-property-mapper",
             "saml-user-attribute-mapper",
+            "oidc-sha256-pairwise-sub-mapper",
             "saml-user-property-mapper",
+            "oidc-usermodel-property-mapper",
             "oidc-full-name-mapper",
-            "oidc-address-mapper"
+            "saml-role-list-mapper",
+            "oidc-address-mapper",
+            "oidc-usermodel-attribute-mapper"
           ]
         }
       },
@@ -1782,14 +1779,14 @@
         "subComponents": {},
         "config": {
           "allowed-protocol-mapper-types": [
-            "oidc-usermodel-attribute-mapper",
+            "oidc-address-mapper",
+            "oidc-full-name-mapper",
             "saml-user-property-mapper",
             "oidc-sha256-pairwise-sub-mapper",
-            "oidc-full-name-mapper",
             "saml-user-attribute-mapper",
-            "oidc-address-mapper",
+            "oidc-usermodel-property-mapper",
             "saml-role-list-mapper",
-            "oidc-usermodel-property-mapper"
+            "oidc-usermodel-attribute-mapper"
           ]
         }
       },

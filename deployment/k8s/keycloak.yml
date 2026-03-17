@@ -35,6 +35,7 @@ spec:
             - "--http-port=9191"
             - "--import-realm"
             - "--http-relative-path=/auth"
+            - "-spi-import-realm-default-strategy=OVERWRITE_EXISTING"
           env:
             - name: KEYCLOAK_ADMIN
               value: "admin"

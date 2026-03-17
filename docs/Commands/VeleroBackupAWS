@@ -23,3 +23,46 @@ fix any isseues
 velero backup-location get
 -> This should say available
 
+
+
+kubectl apply -f deployment/k8s/postgres.yml
+
+
+velero backup create postgres-backup-manual --include-namespaces default --wait
+
+
+velero backup describe postgres-backup-manual
+
+
+velero schedule create daily-postgres-backup `
+  --schedule="0 2 * * *" `
+  --include-namespaces default `
+  --ttl 72h0m0s
+
+
+velero schedule get
+
+
+# Delete the StatefulSet (kills the postgres pod)
+kubectl delete statefulset postgres
+
+
+# Delete the PVC (wipes all the data)
+kubectl delete pvc postgres-storage-postgres-0
+
+
+kubectl get statefulset
+kubectl get pvc
+kubectl get pods | Select-String "postgres"
+
+
+velero backup get
+
+
+velero restore create --from-backup postgres-backup-manual --wait
+
+
+
+
+
+
