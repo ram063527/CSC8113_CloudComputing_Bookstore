@@ -1,0 +1,25 @@
+winget install velero
+
+
+@"
+[default]
+aws_access_key_id=PASTE_YOUR_KEY_HERE
+aws_secret_access_key=PASTE_YOUR_SECRET_HERE
+"@ | Out-File -FilePath "./credentials-velero" -Encoding ascii
+
+
+velero install `
+  --provider aws `
+  --plugins velero/velero-plugin-for-aws:v1.9.0 `
+  --bucket bookstore-velero-backups-csc8113 `
+  --secret-file "./credentials-velero" `
+  --backup-location-config region=eu-west-2 `
+  --use-volume-snapshots=false `
+  --use-node-agent
+
+
+fix any isseues
+
+velero backup-location get
+-> This should say available
+
