@@ -1,5 +1,4 @@
 ---
-# The Service: ClusterIP - accessed via Ingress
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,7 +11,6 @@ spec:
       targetPort: 9000
 
 ---
-# The Deployment: Manages the API Gateway Pod
 apiVersion: apps/v1
 kind: Deployment
 metadata:
