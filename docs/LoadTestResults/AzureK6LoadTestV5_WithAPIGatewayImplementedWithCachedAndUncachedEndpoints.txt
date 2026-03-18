@@ -1,0 +1,93 @@
+// AZURE K6 LOAD TEST RESULTS - VERSION 5 (WITH API GATEWAY IMPLEMENTED WITH CACHED AND UNCACHED ENDPOINTS)
+// Now the catalog service sits behind the API Gateway
+
+
+
+
+PS C:\Windows\System32> kubectl get hpa -w
+NAME                  REFERENCE                         TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 1%/60%   1         8         1          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 76%/60%   1         8         1          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 76%/60%   1         8         2          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 241%/60%   1         8         2          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 241%/60%   1         8         4          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 93%/60%    1         8         4          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 89%/60%    1         8         4          7d17h
+catalog-service-hpa   Deployment/catalog-service-blue   cpu: 57%/60%    1         8         4          7d17h
+
+
+
+PS P:\Advanced Computer Science (ACS)\Semester 2\GroupProject\Bookstore_Production_Code\CSC8113_CloudComputing_Bookstore\docs\LoadTestScript> k6 run load-test.js
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+
+     execution: local
+        script: load-test.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 500 max VUs, 5m30s max duration (incl. graceful stop):
+              * default: Up to 500 looping VUs for 5m0s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 89275   296.965947/s
+    checks_succeeded...: 100.00% 89275 out of 89275
+    checks_failed......: 0.00%   0 out of 89275
+
+    ✓ search 200
+    ✓ listing 200
+    ✓ product 200
+    ✓ genre 200
+
+    HTTP
+    http_req_duration..............: avg=725.54ms min=33.01ms  med=841.15ms max=2.23s p(90)=1.13s p(95)=1.19s
+      { expected_response:true }...: avg=725.54ms min=33.01ms  med=841.15ms max=2.23s p(90)=1.13s p(95)=1.19s
+    http_req_failed................: 0.00%  0 out of 89275
+    http_reqs......................: 89275  296.965947/s
+
+    EXECUTION
+    iteration_duration.............: avg=1.07s    min=138.67ms med=1.15s    max=2.62s p(90)=1.55s p(95)=1.63s
+    iterations.....................: 89275  296.965947/s
+    vus............................: 202    min=2          max=500
+    vus_max........................: 500    min=500        max=500
+
+    NETWORK
+    data_received..................: 87 MB  288 kB/s
+    data_sent......................: 5.7 MB 19 kB/s
+
+
+
+
+running (5m00.6s), 000/500 VUs, 89275 complete and 0 interrupted iterations
+default ✓ [======================================] 000/500 VUs  5m0s
+PS P:\Advanced Computer Science (ACS)\Semester 2\GroupProject\Bookstore_Production_Code\CSC8113_CloudComputing_Bookstore\docs\LoadTestScript>
+
+
+
+
+PS C:\Windows\System32> kubectl get pods -w
+NAME                                    READY   STATUS    RESTARTS        AGE
+api-gateway-77cc4589d9-xw5ss            1/1     Running   0               15h
+cart-service-6f49565444-f8hwg           1/1     Running   0               15h
+catalog-service-blue-86d7c9b99d-drg4k   1/1     Running   1 (9m45s ago)   15h
+catalog-service-green-95d6b59bf-vgqqr   1/1     Running   0               15h
+frontend-bd45758bf-xlmtf                1/1     Running   0               15h
+keycloak-66d8db648b-hz4b5               1/1     Running   0               15h
+postgres-0                              1/1     Running   0               15h
+catalog-service-blue-86d7c9b99d-w26b9   0/1     Pending   0               0s
+catalog-service-blue-86d7c9b99d-w26b9   0/1     Pending   0               0s
+catalog-service-blue-86d7c9b99d-w26b9   0/1     ContainerCreating   0               0s
+catalog-service-blue-86d7c9b99d-w26b9   0/1     Running             0               2s
+catalog-service-blue-86d7c9b99d-b7g4j   0/1     Pending             0               0s
+catalog-service-blue-86d7c9b99d-b7g4j   0/1     Pending             0               0s
+catalog-service-blue-86d7c9b99d-8jkds   0/1     Pending             0               0s
+catalog-service-blue-86d7c9b99d-8jkds   0/1     Pending             0               0s
+catalog-service-blue-86d7c9b99d-w26b9   1/1     Running             0               65s
+

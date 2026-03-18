@@ -6,12 +6,14 @@ export const options = {
     stages: [
         { duration: '60s', target: 100 },
         { duration: '90s', target: 500 },
-        { duration: '90s', target: 1000 },
+        { duration: '90s', target: 500 },
         { duration: '60s', target: 200 },
     ],
 };
 
+// API GATEWAY
 const BASE_URL = 'https://4.225.128.203/catalog';
+
 
 const GENRES = ['Fantasy', 'Dystopian', 'Thriller', 'Mystery', 'Science Fiction', 'Horror', 'Classic', 'Young Adult'];
 const KEYWORDS = ['the', 'art', 'war', 'game', 'dark', 'great', 'lost', 'shadow', 'fire', 'blood', 'mind', 'time'];

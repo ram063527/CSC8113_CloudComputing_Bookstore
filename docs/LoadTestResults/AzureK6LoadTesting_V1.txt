@@ -1,4 +1,7 @@
 ------------------------- AZURE K6 LOAD TESTING RESULTS ------------------
+// This was load test performed on azure after deploying catalog service itself as the load balancer
+// So basically this was the baseline test
+
 
 
 The results : 

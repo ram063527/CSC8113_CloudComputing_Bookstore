@@ -1,4 +1,4 @@
-P:\\Advanced Computer Science (ACS)\\Semester 2\\GroupProject\\Technical_Part\\CSC8113-bookstore-backend>k6 run load-test.js
+// Azure K6 Load Testing Results - But now not just hitting a single endpoint but hitting both cached and uncached enpoints and multiple other endpoints to simulate real user behaviour
 
          /\\      Grafana   /‾‾/
     /\\  /  \\     |\\  __   /  /

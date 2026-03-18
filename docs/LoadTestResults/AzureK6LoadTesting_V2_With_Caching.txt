@@ -1,4 +1,13 @@
-P:\\Advanced Computer Science (ACS)\\Semester 2\\GroupProject\\Technical_Part\\CSC8113-bookstore-backendk6 run load-test.js
+// This was load test performed on azure after deploying catalog service itself as the load balancer and implemented caching for certain end points
+
+// Refactors that we did before doing this load test :
+
+   1. We are using spring data jpa and in our application we had jpa show-sql : true
+   which prints every sql query to the console.  WHICH wastes CPU
+   SO we removed it
+   2. We implemented In-Memory caching (using @EnableCaching annotation provided by springboot out of the box on our catalogService
+   ANd annotated the read methods with @Cacheable annotation
+
 
          /\\      Grafana   /‾‾/
     /\\  /  \\     |\\  __   /  /
