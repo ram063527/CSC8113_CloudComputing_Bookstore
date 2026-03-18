@@ -47,22 +47,28 @@ function viewBook() {
 export default function () {
     const roll = Math.random();
 
+    // 15 % Goes to browseBooks
     if (roll < 0.15) {
-        // 15 % goes to cached end point
         const res = browseBooks();
         check(res, { 'listing 200': (r) => r.status === 200 });
 
     }
-    /// rest 75 % goest to uncachedd endpoints
+
+    // 40 % Goes to seach by Keyword
     else if (roll < 0.55) {
         const res = searchByKeyword();
         check(res, { 'search 200': (r) => r.status === 200 });
 
-    } else if (roll < 0.80) {
+    }
+    // 25 % goes to Search by Genre
+
+    else if (roll < 0.80) {
         const res = searchByGenre();
         check(res, { 'genre 200': (r) => r.status === 200 });
 
-    } else {
+    }
+    // Rest 20% goes to view book  i.e. Search by Book Number
+    else {
         const res = viewBook();
         check(res, { 'product 200': (r) => r.status === 200 });
     }
