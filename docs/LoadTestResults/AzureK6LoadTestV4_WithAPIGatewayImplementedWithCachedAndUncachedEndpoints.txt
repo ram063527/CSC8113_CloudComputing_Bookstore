@@ -1,5 +1,5 @@
-// AZURE K6 LOAD TEST RESULTS - VERSION 5 (WITH API GATEWAY IMPLEMENTED WITH CACHED AND UNCACHED ENDPOINTS)
-// Now the catalog service sits behind the API Gateway
+// AZURE K6 LOAD TEST RESULTS - VERSION 5 (WITH CACHED AND UNCACHED ENDPOINTS - Here we are hitting both cached and uncached endpoints in the load test, and we can see the impact on the HPA scaling as well as the response times. The load test script is designed to hit both types of endpoints to simulate a more realistic load on the system.)
+
 
 
 

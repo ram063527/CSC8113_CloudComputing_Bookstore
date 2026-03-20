@@ -1,0 +1,69 @@
+// THis is the final test which was run on the production setup with the same configuration as the previous test (v4) which was run on the staging setup. The only difference is that this test was run on the production setup.
+// Meaning now the the traffic is going through the API Gateway and not directly hitting the catalog service
+// I also have screenshot for this result.
+
+
+
+NAME,REFERENCE,TARGETS (Used/Limit),MIN,MAX,REPLICAS,AGE
+catalog-service-hpa,Deployment/catalog-service-blue,0% / 60%,1,8,1,8d
+catalog-service-hpa,Deployment/catalog-service-blue,116% / 60%,1,8,1,8d
+catalog-service-hpa,Deployment/catalog-service-blue,116% / 60%,1,8,2,8d
+catalog-service-hpa,Deployment/catalog-service-blue,140% / 60%,1,8,2,8d
+catalog-service-hpa,Deployment/catalog-service-blue,140% / 60%,1,8,3,8d
+catalog-service-hpa,Deployment/catalog-service-blue,90% / 60%,1,8,3,8d
+catalog-service-hpa,Deployment/catalog-service-blue,158% / 60%,1,8,3,8d
+catalog-service-hpa,Deployment/catalog-service-blue,158% / 60%,1,8,6,8d
+catalog-service-hpa,Deployment/catalog-service-blue,106% / 60%,1,8,6,8d
+catalog-service-hpa,Deployment/catalog-service-blue,13% / 60%,1,8,6,8d
+catalog-service-hpa,Deployment/catalog-service-blue,0% / 60%,1,8,6,8d
+catalog-service-hpa,Deployment/catalog-service-blue,1% / 60%,1,8,6,8d
+catalog-service-hpa,Deployment/catalog-service-blue,1% / 60%,1,8,1,8d
+
+
+
+
+
+POD NAME SUFFIX,STATUS,READY,AGE
+tcswr,Pending → ContainerCreating → Running,0/1 → 1/1,0s → 67s
+twh82,Pending,0/1,0s
+9jh2s,Pending,0/1,0s
+vwdr5,Pending,0/1,0s
+hqvtw,Pending,0/1,0s
+tcswr,Terminating → Error,1/1 → 0/1,9m46s
+hqvtw,Terminating,0/1,6m46s
+9jh2s,Terminating,0/1,6m46s
+twh82,Terminating,0/1,8m46s
+vwdr5,Terminating,0/1,6m46s
+
+
+
+
+
+### **Execution Metadata**
+* **Execution:** local
+* **Script:** load-test.js
+* **Output:** -
+
+### **Scenarios**
+* **Scenario (100.00%):** 1 scenario, 500 max VUs, 5m30s max duration (incl. graceful stop).
+* **Default Stage Configuration:** Up to 500 looping VUs for 5m0s over 4 stages (gracefulRampDown: 30s, gracefulStop: 30s).
+
+---
+
+### **Total Results**
+| Metric | Value | Rate |
+| :--- | :--- | :--- |
+| **checks_total** | 84826 | 282.117506/s |
+| **checks_succeeded** | 100.00% | 84826 out of 84826 |
+| **checks_failed** | 0.00% | 0 out of 84826 |
+
+---
+
+### **HTTP Request Checks**
+The following endpoints returned successful status codes (HTTP 200) throughout the test:
+* ✓ **search 200**
+* ✓ **listing 200**
+* ✓ **product 200**
+* ✓ **genre 200**
+
+
